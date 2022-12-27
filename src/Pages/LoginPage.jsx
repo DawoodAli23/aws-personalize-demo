@@ -9,15 +9,10 @@ function Login() {
   const handleSignIn = (event) => {
     event.preventDefault();
     const [{ value: email }, { value: password }] = event.target;
-    if (!email) {
-      setEmailError("This field cannot be empty");
-    }
-    if (!password) {
-      setPasswordError("This field cannot be empty");
-    }
-    if (email && password) {
-      console.log(email, password);
-    }
+    !email && setEmailError("This field cannot be empty");
+    !password && setPasswordError("This field cannot be empty");
+
+    email && password && console.log(email, password);
   };
   return (
     <div className="b grid h-screen w-screen place-items-center text-center shadow-white drop-shadow-2xl">
