@@ -1,18 +1,27 @@
-const {} = require("../../database/schemas");
+const { Users } = require("../../database/schemas");
 const bcrypt = require("bcrypt");
-module.exports.signUp = async (req, res, next) => {
+const createError = require("http-errors");
+exports.signUp = async (req, res, next) => {
   try {
-    // const { email, password, name, dob, gender } = req.body;
+    console.log(req.body);
+    const { email, password, name, dob, gender } = req.body;
     const hashedPassword = await bcrypt.hash(
-      "password",
+      password,
       parseInt(process.env.SALT_ROUNDS)
     );
-    // const user = await Users
+    const user = await Users.create({
+      email,
+      password: hashedPassword,
+      name,
+      dob,
+      gender,
+    });
+    return res.json({
+      status: 200,
+      message: "User created successfully",
+      user,
+    });
   } catch (error) {
-    // return res.json({
-    //   status: 500,
-    //   message: error.message,
-    // });
-    console.log("========>", error.message);
+    next(createError(500, error.message));
   }
 };
