@@ -1,6 +1,7 @@
 const express = require("express");
 const { errorHandler } = require("./middlewares/errorHandler.middleware");
 const userRoutes = require("./routes/user.routes");
+const prodcutRoutes = require("./routes/product.routes");
 require("dotenv").config();
 const app = express();
 //middlewares
@@ -8,6 +9,7 @@ app.use(express.json());
 
 //routes
 app.use("/user", userRoutes);
+app.use("/product", prodcutRoutes);
 app.use(errorHandler);
 //app start
 app.get("/", (req, res) => {
