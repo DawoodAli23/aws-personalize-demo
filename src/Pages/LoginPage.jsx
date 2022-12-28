@@ -21,9 +21,8 @@ function Login() {
           password,
         });
         if (status === 200) {
-          console.log(user, token);
           setItem("user", JSON.stringify(user));
-          setItem("token", JSON.stringify(user));
+          setItem("token", token);
           navigate("/products");
         }
       } catch (error) {

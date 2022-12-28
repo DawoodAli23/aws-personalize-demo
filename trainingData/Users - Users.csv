@@ -1,0 +1,6 @@
+USER_ID,name,password,gender,email,dob,createdAt,updatedAt
+1,test name,$2b$10$4/SJvwOea1qHjdbx2IAdP.OGVXRAdTVmgKJ/F9ZdeoFlM.F.m2.wK,male,dawood.ali.9999@gmail.com,2000-12-26 18:37:17.882+05,2022-12-26 19:29:05.049+05,2022-12-26 19:29:05.049+05
+6,Quamar Randall,$2b$10$iXMjvdcOEMlgH.g2hEIZae1F2EK8JL3deofbvYk4SFhz50WRPsZ1.,male,rikomyj@mailinator.com,2015-02-28 05:00:00+05,2022-12-28 20:27:51.531+05,2022-12-28 20:27:51.531+05
+7,Gannon Wilkins,$2b$10$hMuc4g2hfX6hKR3HkVQW8OzJE8y9tqy3N4mtd8Jm5HbfCJGC/RgU.,female,zyqogep@mailinator.com,1992-02-27 05:00:00+05,2022-12-28 20:29:30.029+05,2022-12-28 20:29:30.029+05
+8,Gillian Stephenson,$2b$10$HHaYyKzWZ5Ukk8152Pgw4e2G5wDDWjoREElVLFIXexo0lSvkIBlW6,female,kogituzo@mailinator.com,2010-10-20 05:00:00+05,2022-12-28 21:22:20.071+05,2022-12-28 21:22:20.071+05
+9,Shay Farley,$2b$10$x2uL2UiOb9wyGiYb65J2WOMJrtdCkEAEcIUlCLduwiW/3NhxONDxe,male,sosehyli@mailinator.com,2021-02-06 05:00:00+05,2022-12-28 21:22:30.971+05,2022-12-28 21:22:30.971+05
