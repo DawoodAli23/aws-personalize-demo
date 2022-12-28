@@ -1,5 +1,5 @@
 import axios from "axios";
 
-export const singIn = (authCred) => {
-  axios.post("http://localhost:3333/signin", { ...authCred });
-};
+export function singIn(authCred) {
+  return axios.post("http://localhost:3333/user/signin", authCred);
+}

@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import AuthContextProvider from "./context/Auth.context";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./Pages/Error";
 import App from "./App";
@@ -8,6 +7,8 @@ import Login from "./Pages/LoginPage";
 import "./index.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import SignUp from "./Pages/SignupPage";
+import Products from "./Pages/ProductPage";
+import ProductDetail from "./Pages/ProductDetailPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,15 +20,23 @@ const router = createBrowserRouter([
     element: <SignUp />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: "/products",
+    element: <Products />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/products/:id",
+    element: <ProductDetail />,
+    errorElement: <ErrorPage />,
+  },
 ]);
 const queryClient = new QueryClient();
 ReactDOM.render(
   <QueryClientProvider client={queryClient}>
-    <AuthContextProvider>
-      <React.StrictMode>
-        <RouterProvider router={router} />
-      </React.StrictMode>
-    </AuthContextProvider>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
   </QueryClientProvider>,
   document.getElementById("root")
 );

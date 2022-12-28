@@ -1,19 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSignin } from "../hooks/auth.hook";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { getItem, setItem } from "../util/localStorage";
 function Login() {
   const { mutateAsync, isLoading } = useSignin();
   const [emailError, setEmailError] = useState(null);
   const [passwordError, setPasswordError] = useState(null);
-  const handleSignIn = (event) => {
+  const navigate = useNavigate();
+  const handleSignIn = async (event) => {
     event.preventDefault();
     const [{ value: email }, { value: password }] = event.target;
     !email && setEmailError("This field cannot be empty");
     !password && setPasswordError("This field cannot be empty");
-
-    email && password && console.log(email, password);
+    if (email && password) {
+      try {
+        const {
+          data: { status, token, user },
+        } = await mutateAsync({
+          email,
+          password,
+        });
+        if (status === 200) {
+          console.log(user, token);
+          setItem("user", JSON.stringify(user));
+          setItem("token", JSON.stringify(user));
+          navigate("/products");
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
   };
+  useEffect(() => {
+    if (getItem("user") && getItem("token")) {
+      navigate("/products");
+    }
+  }, []);
   return (
     <div className="b grid h-screen w-screen place-items-center text-center shadow-white drop-shadow-2xl">
       <div className="w-full max-w-xs">

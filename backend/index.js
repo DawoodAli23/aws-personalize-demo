@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const { errorHandler } = require("./middlewares/errorHandler.middleware");
 const userRoutes = require("./routes/user.routes");
 const prodcutRoutes = require("./routes/product.routes");
@@ -7,6 +8,12 @@ const app = express();
 //middlewares
 app.use(express.json());
 
+//cors setting
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 //routes
 app.use("/user", userRoutes);
 app.use("/product", prodcutRoutes);
