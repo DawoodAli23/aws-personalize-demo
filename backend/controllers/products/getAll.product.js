@@ -8,6 +8,7 @@ exports.getAllProduct = async (req, res, next) => {
     const products = await Products.findAndCountAll({
       offset,
       limit,
+      attributes: { include: ["price", "currency", "title", "images", "id"] },
     });
     return res.json({
       status: 200,

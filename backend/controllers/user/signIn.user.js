@@ -14,14 +14,16 @@ exports.singIn = async (req, res, next) => {
       },
     });
     if (!user) {
-      next(createError("User does not exist please sign up!"));
+      return next(createError("User does not exist please sign up!"));
     }
     const passwordFlag = await bcrypt.compare(
       password,
       user.dataValues.password
     );
     if (!passwordFlag) {
-      next(createError("Incorrect Email or Password, Please try again!"));
+      return next(
+        createError("Incorrect Email or Password, Please try again!")
+      );
     }
     const token = jwt.sign({ user: user.dataValues }, process.env.PRIVATE_KEY);
     delete user.dataValues.password;
@@ -31,6 +33,6 @@ exports.singIn = async (req, res, next) => {
       user: user.dataValues,
     });
   } catch (error) {
-    next(createError(500, error.message));
+    return next(createError(500, error.message));
   }
 };
