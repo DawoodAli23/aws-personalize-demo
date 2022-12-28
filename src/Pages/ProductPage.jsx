@@ -44,6 +44,7 @@ const Products = () => {
                   ({ title, images, price, currency, id }) => {
                     return (
                       <ProductCard
+                        key={id}
                         currency={currency}
                         images={images}
                         price={price}

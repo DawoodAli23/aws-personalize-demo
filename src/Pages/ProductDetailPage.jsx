@@ -5,7 +5,6 @@ const ProductDetail = () => {
   const { id } = useParams();
   const { data, isLoading } = useGetProductDetails(id);
   //   return <>{isLoading ? "loading" : data?.description}</>;
-  console.log(data);
   return (
     <div className="grid h-screen place-items-center ">
       {isLoading ? (
